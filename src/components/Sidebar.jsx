@@ -8,9 +8,9 @@ const Sidebar = () => {
           <ul className='mt-4'>
 
             <li className='p-4' >Menu</li>
-            <li className='mt-5 p-4'>        <NavLink to="/home">Home</NavLink></li>
-            <li className='mt-5 p-4'> <NavLink to="/favorites">Favorites</NavLink></li>
-            <li className='mt-5 p-4'>        <NavLink to="/about">About</NavLink></li>
+            <li className='mt-5'> <NavLink to="/home" className="block w-full p-4 hover:bg-black hover:text-white">Home</NavLink></li>
+            <li className='mt-5'> <NavLink to="/favorites"  className="block w-full p-4 hover:bg-black hover:text-white">Favorites</NavLink></li>
+            <li className='mt-5'> <NavLink to="/about"  className="block w-full p-4 hover:bg-black hover:text-white">About</NavLink></li>
           </ul>
 
           

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
+import Backbtn from '../components/Backbtn';
 
 const AddCorn = ({setCorns}) => {
 
@@ -13,12 +14,37 @@ const AddCorn = ({setCorns}) => {
   );
 
 
+
+  const handleImageChange = (e) => {
+      const file = e.target.files[0];
+      if(file) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setNewCorn((prev) => ({ ...prev, image: reader.result }));
+        };
+        reader.readAsDataURL(file);
+      }
+    };
+
+
   const navigate = useNavigate();
 
   const handleAdd = () => {
+
+    if(!newCorn.name || !newCorn.image || !newCorn.description || !newCorn.date){
+      alert("All fields must be filled before adding.");
+      return;
+    }
+
     setCorns((prev) => [...prev, newCorn]);
+    setNewCorn({
+      name: "",
+      image: "",
+      description: "",
+      date: ""
+    });
     navigate('/home');
-  }
+  };
 
   return (
     <div>
@@ -28,7 +54,11 @@ const AddCorn = ({setCorns}) => {
     <div className='ml-[120px] mt-[85px] p-5 flex justify-center'>
 
       <div>
-        <h1 className='mb-6 text-center'>Add new corn to the list!</h1>
+
+        <div className='flex justify-between'>
+        <h1 className='mb-6'>Add new corn to the list!</h1>
+        <Backbtn />
+        </div>
 
         <div className='flex flex-col gap-8 justify-center mt-10'>
 
@@ -46,19 +76,20 @@ const AddCorn = ({setCorns}) => {
           className='border w-[600px] p-2'
           value={newCorn.date}
           onChange={(e) => setNewCorn({ ...newCorn, date: e.target.value })}
-          />
+          /> 
 
-          <input type='file' accept='image/*'
+          <input 
           className='border w-[600px] p-2'
-          onChange={(e) => { const file = e.target.files[0]; 
-            if(file) {
-              const imageUrl = URL.createObjectURL(file);
-              setNewCorn({...newCorn, image: imageUrl});
-            }}
-          }/>
+          type='file' onChange={handleImageChange}/>
+          {newCorn.image && (<img src={newCorn.image} alt='Previes' className='w-[300px] h-[250px]'/>)}
           
           <div className='flex justify-center'>
-          <button className='w-[200px] bg-green-500 p-2' onClick={handleAdd}>Add Corn</button>
+
+          
+          <button className={`w-[200px] p-2 ${(!newCorn.name || !newCorn.image || !newCorn.description || !newCorn.date) ? 'bg-gray-400 text-white cursor-not-allowed' : 'bg-green-500'} `}
+           onClick={handleAdd}
+           disabled={!newCorn.name || !newCorn.image || !newCorn.description || !newCorn.date}
+           >Add Corn</button>
           </div>
     
 

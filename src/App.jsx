@@ -6,6 +6,8 @@ import Favorites from './pages/Favorites';
 import AddCorn from './pages/AddCorn';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
+import EditBtn from './pages/EditBtn';
+import CardDetails from './pages/CardDetails';
 
 function App() {
 
@@ -21,6 +23,8 @@ function App() {
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/about" element={<About />} />
         <Route path='/addcorn' element={<AddCorn setCorns={setCorns} />} />
+        <Route path='/edit/:index' element={<EditBtn corns={corns} setCorns={setCorns} /> } /> 
+        <Route path='/details/:index' element={<CardDetails corns={corns} /> } />
       </Routes>
 
     </div>

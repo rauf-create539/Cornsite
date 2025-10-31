@@ -1,9 +1,17 @@
 import React, { useState } from 'react'
+import { NavLink, useNavigate } from 'react-router-dom';
+import EditBtn from '../pages/EditBtn';
+import { FaTrash, FaEdit } from "react-icons/fa";
 
 const Cards = ({ corns, setCorns }) => {
 
+    const navigate = useNavigate();
+
       const handleDelete = (index) => {
-    setCorns(corns.filter((_, i) => i !== index));
+        const confirmDelete = window.confirm("Are you sure you want to delete this?");
+        if(confirmDelete) {
+          setCorns(corns.filter((_, i) => i !== index));
+        }
   };
 
 
@@ -15,7 +23,7 @@ const Cards = ({ corns, setCorns }) => {
         </p> ) : ( 
             <ul className='grid grid-cols-6 gap-4'>
                 {corns.map((corn, i) => (
-            <li key={i} className='bg-amber-400 p-4' >
+            <li key={i} className='bg-amber-400 p-4 flex flex-col justify-center text-center' >
                 <h1>{corn.name}</h1>
 
                 {corn.image && (
@@ -26,10 +34,21 @@ const Cards = ({ corns, setCorns }) => {
                 )}
 
                 {corn.date && <p>Date: {corn.date}</p>}
-                {corn.description && <p>{corn.description}</p>}
 
-                <button className='bg-red-500 p-2 w-[100px]' onClick={() =>handleDelete(i)}
-               >Delete</button>
+                <button className='mt-4 mb-4'>
+                  <NavLink to={`/details/${i}`} className={`w-full p-2 bg-gray-400`}>View Details</NavLink>
+                </button>
+                
+                <div className='flex gap-4 justify-center'>
+                  <button className='text-center text-red-500' onClick={() =>handleDelete(i)}
+                > <FaTrash /> </button>
+                <button>
+                    <NavLink to={`/edit/${i}`} className={`text-green-500`}>
+                    <FaEdit />
+                    </NavLink>
+                </button>
+                </div>
+
 
             </li>
         ))}
