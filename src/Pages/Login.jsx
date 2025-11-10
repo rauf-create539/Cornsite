@@ -13,9 +13,9 @@ const Login = () => {
   return (
     <div className='flex bg-amber-100 h-[100vh] justify-center items-center '>
    
-        <div className='bg-white p-6 w-[500px] rounded-xl flex flex-col gap-4 shadow-2xl'>
+        <div className='bg-white p-6 w-[500px] rounded-xl flex flex-col gap-4 shadow-2xl border-3 border-t-0 border-l-0'>
             <div className='flex justify-start'>
-                <button onClick={(handleClick)}> <FaArrowAltCircleLeft size={30} className={`text-amber-600`}/> </button>
+                <button onClick={(handleClick)}> <FaArrowAltCircleLeft size={30} className={`text-amber-600 hover:text-black transition-all ease-in-out hover:scale-105`}/> </button>
             </div>
             
             <div className='p-6'>

@@ -10,9 +10,10 @@ const LandingPage = () => {
                 <h1 className='font-semibold'>Corn-App</h1>
             </div>
             
-            <div className='flex gap-4 mr-6'>
-                <NavLink to="/signup" className={`bg-amber-400 font-medium  p-2 rounded-md w-[100px] text-center  `}>Sign up</NavLink>
-                <NavLink to="/login" className={`bg-gray-300  font-medium p-2 rounded-md w-[100px] text-center `}>Log in</NavLink>
+            <div className='flex gap-4 mr-6 items-center'>
+                <NavLink to="/home" className={`font-semibold`}>Home</NavLink>
+                <NavLink to="/signup" className={`bg-amber-400  hover:bg-amber-700 hover:text-white hover:scale-105 transition-all duration-300 ease-in-out font-medium  p-2 rounded-md w-[100px] text-center  `}>Sign up</NavLink>
+                <NavLink to="/login" className={`bg-gray-300 hover:bg-amber-700 hover:text-white hover:scale-105 transition-all duration-300 ease-in-out   font-medium p-2 rounded-md w-[100px] text-center `}>Log in</NavLink>
             </div>
         </header>
         
@@ -24,7 +25,7 @@ const LandingPage = () => {
 
             <div className='flex gap-4 mb-6'>
                 <div className='bg-amber-200 flex flex-col gap-2 justify-center items-center p-4 border-3 border-t-0 border-l-0 w-[350px] h-[230px] rounded-2xl shadow-lg'>
-                    <div className='bg-amber-300 p-2 w-[100px] flex justify-center rounded-xl'>
+                    <div className='bg-amber-300  p-2 w-[100px] flex justify-center rounded-xl'>
                         <FaUser size={50} className={`text-amber-700`}/>
                     </div>
                         <div>
@@ -53,7 +54,7 @@ const LandingPage = () => {
             </div>
 
             <div className='mt-4 mb-6' >
-                <NavLink to="/signup" className={`bg-amber-400 font-medium  p-3 rounded-md w-[400px] text-center  border-3 border-t-0 border-l-0`}>Get Started - it's free!</NavLink>               
+                <NavLink to="/signup" className={`bg-amber-400 hover:bg-amber-700 hover:text-white hover:scale-205 transition-all duration-300 ease-in-out  font-medium  p-3 rounded-md w-[400px] text-center  border-3 border-t-0 border-l-0`}>Get Started - it's free!</NavLink>               
             </div>
 
             <div>
